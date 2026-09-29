@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resfriamento de um café com Equação Diferencial Ordinária</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+
+    <header>
+      <h1>Resfriamento de um café utilizando EDO</h1>
+      <p>Simulação com equação diferencial ordinária (Lei de Resfriamento de Newton), para 60 minutos.</p>
+      <div class="equacao">dT/dt = −k · (T − T<sub>amb</sub>)</div>
+    </header>
+
+    <!-- Entrada de dados -->
+    <section class="card">
+      <h2>Parâmetros</h2>
+      <form id="formulario" novalidate>
+        <label>
+          Constante de arrefecimento k (1/min)
+          <input id="input-k" type="number" step="any" value="0.1" required>
+        </label>
+
+        <label>
+          Temperatura ambiente (°C)
+          <input id="input-ambiente" type="number" step="any" value="25" required>
+        </label>
+
+        <label>
+          Temperatura inicial do café (°C)
+          <input id="input-inicial" type="number" step="any" value="90" required>
+        </label>
+
+        <p id="mensagem-erro" role="alert"></p>
+        <button type="submit">Calcular</button>
+      </form>
+    </section>
+
+    <!-- Saída: aparece depois do primeiro cálculo -->
+    <div id="resultados" hidden>
+
+      <section class="card">
+        <h2>Resultados</h2>
+        <div class="indicadores">
+          <div class="indicador">
+            <span>Temperatura final (60 min)</span>
+            <b id="res-final"></b>
+          </div>
+          <div class="indicador">
+            <span>Diferença em relação ao ambiente</span>
+            <b id="res-diferenca"></b>
+          </div>
+          <div class="indicador">
+            <span>Erro máx. numérico × analítico</span>
+            <b id="res-erro"></b>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Gráfico</h2>
+        <canvas id="grafico" aria-label="Gráfico da temperatura do café ao longo do tempo"></canvas>
+      </section>
+
+      <section class="card">
+        <h2>Tabela</h2>
+        <div class="tabela-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tempo (min)</th>
+                <th>Numérica (°C)</th>
+                <th>Analítica (°C)</th>
+              </tr>
+            </thead>
+            <tbody id="tabela-corpo"></tbody>
+          </table>
+        </div>
+        <p class="nota">
+          Solução numérica por Runge-Kutta de 4ª ordem (passo de 0,05 min).
+          Solução analítica: T(t) = T<sub>amb</sub> + (T<sub>0</sub> − T<sub>amb</sub>)·e<sup>−kt</sup>.
+        </p>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
