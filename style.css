@@ -1,4 +1,7 @@
-/* ===== Variáveis de cor (tema claro) ===== */
+/* importando fonte*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis de cor  */
 :root {
   --fundo: #f6f1ea;
   --cartao: #fffdf9;
@@ -12,7 +15,7 @@
   --erro: #c0392b;
 }
 
-/* ===== Tema escuro (segue a preferência do sistema) ===== */
+/* Tema escuro  */
 @media (prefers-color-scheme: dark) {
   :root {
     --fundo: #1a1410;
@@ -27,7 +30,7 @@
   }
 }
 
-/* ===== Base ===== */
+/* Base  */
 *,
 *::before,
 *::after {
@@ -38,7 +41,7 @@ body {
   margin: 0;
   background: var(--fundo);
   color: var(--texto);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: 'Inter', sans-serif; /* A fonte base que espalhará para os outros elementos */
   line-height: 1.5;
 }
 
@@ -48,16 +51,16 @@ main {
   padding: 28px 18px 48px;
 }
 
-/* ===== Cabeçalho ===== */
+/*  Cabeçalho  */
 header h1 {
   margin: 0 0 6px;
   font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 700; /* Aproveitando o peso 700 importado */
 }
 
 header p {
   margin: 0;
   color: var(--texto-suave);
-  font-family: system-ui, sans-serif;
   font-size: 0.95rem;
 }
 
@@ -67,12 +70,12 @@ header p {
   border-left: 3px solid var(--destaque-claro);
   border-radius: 6px;
   background: var(--cartao);
-  font-family: "Courier New", monospace;
+  font-family: "Courier New", monospace; /* Mantido monospace para equações */
   font-size: 0.95rem;
   overflow-x: auto;
 }
 
-/* ===== Cartões ===== */
+/* Cartões */
 .card {
   margin-top: 20px;
   padding: 20px;
@@ -84,14 +87,14 @@ header p {
 .card h2 {
   margin: 0 0 14px;
   font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* ===== Formulário ===== */
+/* Formulário */
 form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 14px;
-  font-family: system-ui, sans-serif;
 }
 
 label {
@@ -100,6 +103,7 @@ label {
   gap: 5px;
   color: var(--texto-suave);
   font-size: 0.85rem;
+  font-weight: 500;
 }
 
 input {
@@ -108,7 +112,7 @@ input {
   border-radius: 8px;
   background: var(--fundo);
   color: var(--texto);
-  font: inherit;
+  font: inherit; /* Puxa a Inter automaticamente do body */
   font-size: 1rem;
 }
 
@@ -124,7 +128,9 @@ button {
   border-radius: 8px;
   background: var(--destaque);
   color: var(--texto-botao);
-  font: 600 1rem system-ui, sans-serif;
+  font-family: inherit; /* Força o botão a usar a Inter */
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
 }
 
@@ -140,7 +146,7 @@ button:hover {
   font-size: 0.9rem;
 }
 
-/* ===== Resultados ===== */
+/*  Resultados */
 #resultados[hidden] {
   display: none;
 }
@@ -149,7 +155,6 @@ button:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
   gap: 12px;
-  font-family: system-ui, sans-serif;
 }
 
 .indicador {
@@ -163,21 +168,23 @@ button:hover {
   display: block;
   color: var(--texto-suave);
   font-size: 0.78rem;
+  font-weight: 500;
 }
 
 .indicador b {
   color: var(--destaque);
   font-size: 1.5rem;
+  font-weight: 700;
 }
 
-/* ===== Gráfico ===== */
+/* Gráfico  */
 canvas {
   display: block;
   width: 100%;
   height: 340px;
 }
 
-/* ===== Tabela ===== */
+/* Tabela  */
 .tabela-container {
   overflow-x: auto;
 }
@@ -186,7 +193,6 @@ table {
   width: 100%;
   min-width: 420px;
   border-collapse: collapse;
-  font-family: system-ui, sans-serif;
   font-size: 0.92rem;
 }
 
@@ -211,6 +217,5 @@ td:first-child {
 .nota {
   margin: 10px 0 0;
   color: var(--texto-suave);
-  font-family: system-ui, sans-serif;
   font-size: 0.82rem;
 }

@@ -1,10 +1,10 @@
-// ===== Configuração da simulação =====
-const TEMPO_TOTAL = 60;                                  // minutos
-const PASSO = 0.05;                                      // minutos
+//Configuração da simulação 
+const TEMPO_TOTAL = 60;                                  // min
+const PASSO = 0.05;                                      // min
 const NUM_PASSOS = Math.round(TEMPO_TOTAL / PASSO);
-const INTERVALO_TABELA = 10;                             // minutos
+const INTERVALO_TABELA = 10;                             // min
 
-// Última simulação (usada para redesenhar o gráfico)
+// Última simulação 
 let simulacaoAtual = null;
 
 // ===== Elementos da página =====
@@ -54,7 +54,7 @@ function simular(k, tAmb, t0) {
 }
 
 
-// ===== Interface: resultados e tabela =====
+// resultados e tabela 
 
 function preencherIndicadores({ numerica, tAmb, erroMaximo }) {
   const final = numerica[NUM_PASSOS];
@@ -78,7 +78,7 @@ function preencherTabela({ numerica, analitica }) {
 }
 
 
-// ===== Interface: gráfico =====
+// Interface: gráfico 
 
 function corCss(nome) {
   return getComputedStyle(document.documentElement).getPropertyValue(nome).trim();
@@ -181,7 +181,7 @@ function desenharCurva(ctx, { numerica, paraX, paraY }) {
   ctx.lineJoin = "round";
   ctx.beginPath();
 
-  // Usa 1 a cada 4 pontos: suficiente para uma curva suave
+  // Usa 1 a cada 4 pontos
   for (let i = 0; i <= NUM_PASSOS; i += 4) {
     const x = paraX(i * PASSO);
     const y = paraY(numerica[i]);
@@ -192,7 +192,7 @@ function desenharCurva(ctx, { numerica, paraX, paraY }) {
 }
 
 
-// ===== Eventos =====
+//  Eventos 
 
 formulario.addEventListener("submit", (evento) => {
   evento.preventDefault();
